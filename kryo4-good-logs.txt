@@ -1,0 +1,22 @@
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo4-2.13.8 (main) $ sbt run
+[info] welcome to sbt 1.8.2 (Azul Systems, Inc. Java 11.0.16)
+[info] loading global plugins from /Users/roczei/.sbt/1.0/plugins
+[info] loading settings for project scala_project_kryo4-2-13-8-build from plugins.sbt ...
+[info] loading project definition from /Users/roczei/github/kryo_repro/scala_project_kryo4-2.13.8/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala_project (in build file:/Users/roczei/github/kryo_repro/scala_project_kryo4-2.13.8/)
+[warn] there's a key that's not used by any other settings/tasks:
+[warn]  
+[warn] * root / idePackagePrefix
+[warn]   +- /Users/roczei/github/kryo_repro/scala_project_kryo4-2.13.8/build.sbt:8
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[info] running com.roczei.testing.Main 
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.esotericsoftware.kryo.util.UnsafeUtil (file:/Users/roczei/github/kryo_repro/scala_project_kryo4-2.13.8/target/bg-jobs/sbt_39b094aa/target/ac5370a6/dee2ac46/kryo-shaded-4.0.2.jar) to constructor java.nio.DirectByteBuffer(long,int,java.lang.Object)
+WARNING: Please consider reporting this to the maintainers of com.esotericsoftware.kryo.util.UnsafeUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[success] Total time: 1 s, completed 18 Apr 2023, 19:21:59
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo4-2.13.8 (main) $ 

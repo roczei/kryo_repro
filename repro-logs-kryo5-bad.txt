@@ -1,0 +1,227 @@
+
+
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.11.12 (main) $ sbt run
+[info] welcome to sbt 1.8.2 (Azul Systems, Inc. Java 11.0.16)
+[info] loading global plugins from /Users/roczei/.sbt/1.0/plugins
+[info] loading settings for project scala_project_kryo5-2-11-12-build from plugins.sbt ...
+[info] loading project definition from /Users/roczei/github/kryo_repro/scala_project_kryo5-2.11.12/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala_project (in build file:/Users/roczei/github/kryo_repro/scala_project_kryo5-2.11.12/
+[warn] there's a key that's not used by any other settings/tasks:
+[warn]  
+[warn] * root / idePackagePrefix
+[warn]   +- /Users/roczei/github/kryo_repro/scala_project_kryo5-2.11.12/build.sbt:8
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[info] running com.roczei.testing.Main 
+[error] com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap'
+[error] Serialization trace:
+[error] array (scala.collection.mutable.WrappedArray$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:101)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] Caused by: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.DefaultSerializers$StringSerializer.write(DefaultSerializers.java:164)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObjectOrNull(Kryo.java:692)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:79)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] stack trace is suppressed; run last Compile / run for the full output
+[error] (Compile / run) com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] Serialization trace:
+[error] array (scala.collection.mutable.WrappedArray$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] Total time: 1 s, completed 18 Apr 2023, 19:23:51
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.11.12 (main) $ 
+
+
+
+
+
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.12.7 (main) $ sbt run
+[info] welcome to sbt 1.8.2 (Azul Systems, Inc. Java 11.0.16)
+[info] loading global plugins from /Users/roczei/.sbt/1.0/plugins
+[info] loading settings for project scala_project_kryo5-2-12-7-build from plugins.sbt ...
+[info] loading project definition from /Users/roczei/github/kryo_repro/scala_project_kryo5-2.12.7/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala_project (in build file:/Users/roczei/github/kryo_repro/scala_project_kryo5-2.12.7/)
+[warn] there's a key that's not used by any other settings/tasks:
+[warn]  
+[warn] * root / idePackagePrefix
+[warn]   +- /Users/roczei/github/kryo_repro/scala_project_kryo5-2.12.7/build.sbt:8
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[info] running com.roczei.testing.Main 
+[error] com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap'
+[error] Serialization trace:
+[error] array (scala.collection.mutable.WrappedArray$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:101)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] Caused by: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.DefaultSerializers$StringSerializer.write(DefaultSerializers.java:164)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObjectOrNull(Kryo.java:692)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:79)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] stack trace is suppressed; run last Compile / run for the full output
+[error] (Compile / run) com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] Serialization trace:
+[error] array (scala.collection.mutable.WrappedArray$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] Total time: 1 s, completed 18 Apr 2023, 19:24:14
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.12.7 (main) $ 
+
+
+
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.12.7 (main) $ sbt run
+[info] welcome to sbt 1.8.2 (Azul Systems, Inc. Java 11.0.16)
+[info] loading global plugins from /Users/roczei/.sbt/1.0/plugins
+[info] loading settings for project scala_project_kryo5-2-12-7-build from plugins.sbt ...
+[info] loading project definition from /Users/roczei/github/kryo_repro/scala_project_kryo5-2.12.7/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala_project (in build file:/Users/roczei/github/kryo_repro/scala_project_kryo5-2.12.7/)
+[warn] there's a key that's not used by any other settings/tasks:
+[warn]  
+[warn] * root / idePackagePrefix
+[warn]   +- /Users/roczei/github/kryo_repro/scala_project_kryo5-2.12.7/build.sbt:8
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[info] running com.roczei.testing.Main 
+[error] com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap'
+[error] Serialization trace:
+[error] array (scala.collection.mutable.WrappedArray$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:101)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] Caused by: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.DefaultSerializers$StringSerializer.write(DefaultSerializers.java:164)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObjectOrNull(Kryo.java:692)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:79)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] stack trace is suppressed; run last Compile / run for the full output
+[error] (Compile / run) com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] Serialization trace:
+[error] array (scala.collection.mutable.WrappedArray$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] Total time: 1 s, completed 18 Apr 2023, 19:24:38
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.12.7 (main) $ 
+
+
+
+
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.13.8 (main) $ sbt run
+[info] welcome to sbt 1.8.2 (Azul Systems, Inc. Java 11.0.16)
+[info] loading global plugins from /Users/roczei/.sbt/1.0/plugins
+[info] loading settings for project scala_project_kryo5-2-13-8-build from plugins.sbt ...
+[info] loading project definition from /Users/roczei/github/kryo_repro/scala_project_kryo5-2.13.8/project
+[info] loading settings for project root from build.sbt ...
+[info] set current project to scala_project (in build file:/Users/roczei/github/kryo_repro/scala_project_kryo5-2.13.8/)
+[warn] there's a key that's not used by any other settings/tasks:
+[warn]  
+[warn] * root / idePackagePrefix
+[warn]   +- /Users/roczei/github/kryo_repro/scala_project_kryo5-2.13.8/build.sbt:8
+[warn]  
+[warn] note: a setting might still be used by a command; to exclude a key from this `lintUnused` check
+[warn] either append it to `Global / excludeLintKeys` or call .withRank(KeyRanks.Invisible) on the key
+[info] running com.roczei.testing.Main 
+[error] com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap'
+[error] Serialization trace:
+[error] unsafeArray (scala.collection.immutable.ArraySeq$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:101)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] Caused by: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.DefaultSerializers$StringSerializer.write(DefaultSerializers.java:164)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObjectOrNull(Kryo.java:692)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:79)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:642)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.ReflectField.write(ReflectField.java:70)
+[error] 	at com.esotericsoftware.kryo.kryo5.serializers.FieldSerializer.write(FieldSerializer.java:108)
+[error] 	at com.esotericsoftware.kryo.kryo5.Kryo.writeObject(Kryo.java:627)
+[error] 	at com.roczei.testing.Main$.main(Main.scala:21)
+[error] 	at com.roczei.testing.Main.main(Main.scala)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[error] 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[error] 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[error] 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[error] stack trace is suppressed; run last Compile / run for the full output
+[error] (Compile / run) com.esotericsoftware.kryo.kryo5.KryoException: java.lang.ClassCastException: class [Ljava.lang.String; cannot be cast to class java.lang.String ([Ljava.lang.String; and java.lang.String are in module java.base of loader 'bootstrap')
+[error] Serialization trace:
+[error] unsafeArray (scala.collection.immutable.ArraySeq$ofRef)
+[error] vargs (com.roczei.testing.TestVarArgs)
+[error] Total time: 1 s, completed 18 Apr 2023, 19:24:59
+roczei@roczei-MBP16 ~/github/kryo_repro/scala_project_kryo5-2.13.8 (main) $ 
+
